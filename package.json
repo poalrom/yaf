@@ -1,0 +1,99 @@
+{
+    "name": "yaf",
+    "displayName": "yaf",
+    "description": "Yet another file (file creator extencion)",
+    "version": "0.0.1",
+    "publisher": "poalrom",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/poalrom/yaf"
+    },
+    "engines": {
+        "vscode": "^1.24.0"
+    },
+    "categories": [
+        "Other"
+    ],
+    "activationEvents": [
+        "*"
+    ],
+    "main": "./out/extension",
+    "contributes": {
+        "commands": [
+            {
+                "category": "YAF",
+                "command": "extension.createFileFromAnother",
+                "title": "Create file in another tech"
+            },
+            {
+                "category": "YAF",
+                "command": "extension.createFileFromExplorerContext",
+                "title": "Create file in another tech"
+            },
+            {
+                "category": "YAF",
+                "command": "extension.createFileInDir",
+                "title": "Create file in tech"
+            }
+        ],
+        "menus": {
+            "explorer/context": [
+                {
+                    "command": "extension.createFileFromExplorerContext",
+                    "when": "!explorerResourceIsFolder"
+                },
+                {
+                    "command": "extension.createFileInDir",
+                    "when": "explorerResourceIsFolder"
+                }
+            ],
+            "commandPalette": [
+                {
+                    "command": "extension.createFileFromAnother",
+                    "when": "editorIsOpen"
+                },
+                {
+                    "command": "extension.createFileFromExplorerContext",
+                    "when": "false"
+                },
+                {
+                    "command": "extension.createFileInDir",
+                    "when": "false"
+                }
+            ]
+        },
+        "keybindings": [
+            {
+                "command": "extension.createFileFromAnother",
+                "key": "alt+shift+r",
+                "mac": "cmd+shift+r",
+                "when": "editorTextFocus"
+            }
+        ],
+        "configuration": {
+            "type": "object",
+            "title": "yaf configuration",
+            "properties": {
+                "yaf.techs": {
+                    "type": "string",
+                    "default": "js,jsx,styl,postcss,css",
+                    "description": "Comma separated file techs"
+                }
+            }
+        }
+    },
+    "scripts": {
+        "vscode:prepublish": "npm run compile",
+        "compile": "tsc -p ./",
+        "watch": "tsc -watch -p ./",
+        "postinstall": "node ./node_modules/vscode/bin/install",
+        "test": "npm run compile && node ./node_modules/vscode/bin/test"
+    },
+    "devDependencies": {
+        "typescript": "^2.6.1",
+        "vscode": "^1.1.6",
+        "tslint": "^5.8.0",
+        "@types/node": "^7.0.43",
+        "@types/mocha": "^2.2.42"
+    }
+}
