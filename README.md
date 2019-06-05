@@ -1,5 +1,7 @@
 # yaf README
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/poalrom/yaf.svg)](https://greenkeeper.io/)
+
 [★ Star on GitHub](https://github.com/poalrom/yaf)
 
 ## Features
